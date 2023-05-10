@@ -169,6 +169,10 @@ UPDATE `gameobject_template` SET `data5` = 1 WHERE `entry` IN (185497,185500);
 UPDATE gameobject_template SET data5=1 WHERE entry=184906; -- Power Converter (consumable)
 UPDATE gameobject_template SET data8=1 WHERE entry=184910; -- Power Converter (serverside)
 
+-- o.184958 'Nether Drake Egg'
+-- trap makes it look like double spawn - removing its display fixes issue
+UPDATE gameobject_template SET displayId = 0 WHERE entry = 184958;
+
 -- -------------------------------
 -- Item custom changes
 -- -------------------------------
@@ -215,6 +219,7 @@ UPDATE creature_template SET `modelid2` = 0, `modelid3` = 0, `modelid4` = 0 WHER
 );
 
 UPDATE creature_template SET `modelid1` = 0, `modelid3` = 0, `modelid4` = 0 WHERE `entry` IN (
+12999, -- World Invisible Trigger (11686)
 21419, -- Infernal Attacker - modelid1 (17312)
 22418 -- Archimonde Channel Target (18783)
 );
@@ -230,3 +235,11 @@ UPDATE `creature_template` SET `name` = 'Redeemed Spirit of Earth' WHERE `entry`
 -- -------------------------------
 
 -- None
+
+-- -------------------------------
+-- Spell custom changes
+-- -------------------------------
+
+-- Dance Vibe spell should not stack
+UPDATE `spell_template` SET `StackAmount`='1' WHERE (`Id`='29521');
+
