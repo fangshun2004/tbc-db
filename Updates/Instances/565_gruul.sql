@@ -107,7 +107,7 @@ INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `position_x`, `posit
 -- ============
 
 INSERT INTO `spawn_group` (`Id`, `Name`, `Type`, `MaxCount`, `WorldState`, `Flags`) VALUES
-(@SGGUID+1, 'Gruuls\'Lair - High King Maulgar | Group 1', 0, 0, 0, 7), -- aggro, respawn and evade together
+(@SGGUID+1, 'Gruuls\'Lair - High King Maulgar | Group 1', 0, 0, @SGGUID+1, 7), -- aggro, respawn and evade together
 (@SGGUID+2, 'Gruuls\'Lair - Gruul | Group 1', 0, 0, 0, 0),
 (@SGGUID+3, 'Gruuls\'Lair - Lair Brute | Patrol', 0, 0, @SGGUID+1, 0),
 (@SGGUID+4, 'Gruuls\'Lair - Lair Brute | Gronn-Priest | Group 2', 0, 0, @SGGUID+1, 3), -- aggro and respawn together
@@ -154,8 +154,8 @@ INSERT INTO `worldstate_name` (`Id`, `Name`) VALUES
 
 DELETE FROM `conditions` WHERE `condition_entry` IN (@SGGUID+1, @SGGUID+2);
 INSERT INTO `conditions` (`condition_entry`, `type`, `value1`, `value2`, `value3`, `value4`, `flags`, `comments`) VALUES
-(@SGGUID+1, '42', 2778, '0', '0', '0', '0', 'Highking Maulgar - Trash Respawn'),
-(@SGGUID+2, '42', 4804, '0', '0', '0', '0', 'Gruul the Dragonkiller - Trash Respawn');
+(@SGGUID+1, 42, 2778, 1, 0, 0, 0, 'Highking Maulgar - Trash Respawn'),
+(@SGGUID+2, 42, 4804, 1, 0, 0, 0, 'Gruul the Dragonkiller - Trash Respawn');
 
 -- =========
 -- DBSCRIPTS
